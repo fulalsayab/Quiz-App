@@ -25,12 +25,20 @@ let questions = [
     },
 
     {
-        question: " How do you write 'Hello World' in an alert box?",
+        question: "How do you write 'Hello World' in an alert box?",
         choice1: "msgBox('Hello World');",
         choice2: "alertBox('Hello World');",
         choice3: "msg('Hello World');",
         choice4: "alert('Hello World');",
         answer: 4,
+    },
+    {
+        question: "How would you find HTML elements by element id?",
+        choice1: "document.getElementById(id)",
+        choice2: "document.getElement(id)",
+        choice3: "document.getElementByTag(id)",
+        choice4: "document.getById(id)",
+        answer: 1,
     }
 ];
 
