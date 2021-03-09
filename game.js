@@ -1,5 +1,8 @@
+
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const questionCounterText = document.getElementById("questionCounter");
+const scoreText = document.getElementById("score");
 let currentQuestion = {};
 let acceptingAnswer = false;
 let score = 0;
@@ -17,10 +20,10 @@ let questions = [
     },
     {
         question:"What is the correct syntax for referring to an external script called 'xxx.js'?'",
-        choice1:'<script>',
-        choice2:'<javascript>',
-        choice3:'<js>',
-        choice4:'<scripting>',
+        choice1: "<script href='xxx.js'>",
+        choice2: "<script name='xxx.js'>",
+        choice3: "<script src='xxx.js'>",
+        choice4: "<script file='xxx.js'>",
         answer: 3,
     },
 
@@ -62,15 +65,17 @@ getNewQuestion = () => {
     }
 
     questionCounter++;
+    questionCounterText.innerText = `${questionCounter }/${MAX_QUSETIONS}`;
+
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
 
     //
     choices.forEach((choice) => {
-        // const number = choice.dataset['number']
-        // choice.innerText = currentQuestion[`choice${number}`];
-        choice.innerText = currentQuestion[`choice${choice.dataset['number']}`];
+        //  const number = choice.dataset['number']
+        //  choice.innerText = currentQuestion[`choice${number}`];
+       choice.innerText = currentQuestion[`choice${choice.dataset['number']}`];
     });
 
     availableQuestions.splice(questionIndex, 1);
@@ -83,8 +88,25 @@ getNewQuestion = () => {
             acceptingAnswer = false;
             const selectedChoice = e.target;
             const selectedAnswer = selectedChoice.dataset['number'];
-            getNewQuestion();
+            const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+            
+            selectedChoice.parentElement.classList.add(classToApply);
+
+            if (classToApply === 'correct') {
+                incrementScore(CORRECT_BONUS);
+             }
+
+            setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+                getNewQuestion();
+            }, 1000)
+
         })
     })
+}
+
+incrementScore = (num) => {
+    score += num;
+    scoreText.innerText = score;
 }
 startGame();

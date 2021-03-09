@@ -21,3 +21,22 @@
   padding: 1.5rem;
   width: 100%;
 }
+.correct {
+  background: green;
+}
+.incorrect {
+  background: red;
+}
+/* HUD */
+#hud {
+  display: flex;
+  justify-content: space-between;
+}
+.hud-prefix {
+  text-align: center;
+  font-size: 2rem;
+  color: #56a5eb;
+}
+.hud-main-text {
+  text-align: center;
+}
