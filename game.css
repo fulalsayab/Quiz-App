@@ -40,14 +40,39 @@
 .hud-main-text {
   text-align: center;
 }
-#progressBar{
-    width: 20rem;
-    height: 4rem;
-    border: 0.3rem solid #56a5eb;
-    margin-top: 1.5rem;
+#progressBar {
+  width: 20rem;
+  height: 4rem;
+  border: 0.3rem solid #56a5eb;
+  margin-top: 1.5rem;
 }
-#progressBarFull{
-    height: 3.4rem;
-    background-color:#56a5eb;
-    width: 0%;
+#progressBarFull {
+  height: 3.4rem;
+  background-color: #56a5eb;
+  width: 0%;
+}
+/*Loader */
+#loader {
+  border: 1.6rem solid white;
+  border-radius: 50%;
+  border-top: 1.6rem solid #56a5eb;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 6s linear infinite;
+  animation-timing-function: ease-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(480deg);
+  }
+  66% {
+    transform: rotate(960deg);
+  }
+  100% {
+    transform: rotate(1440deg);
+  }
 }
